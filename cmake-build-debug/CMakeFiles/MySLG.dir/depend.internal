@@ -6,49 +6,53 @@ CMakeFiles/MySLG.dir/Army/ArmyTroops.cpp.obj
  ../GameEngine/AutoID.h
  ../GameEngine/Function.h
  ../GameEngine/SingleTon.h
- C:/Users/lsjlkz/CLionProjects/MySLG/Army/ArmyFightDefine.h
- C:/Users/lsjlkz/CLionProjects/MySLG/Army/ArmyTroops.cpp
- C:/Users/lsjlkz/CLionProjects/MySLG/Army/ArmyTroops.h
- C:/Users/lsjlkz/CLionProjects/MySLG/Army/FightHelp.h
- C:/Users/lsjlkz/CLionProjects/MySLG/Army/UnitSoldier.h
+ D:/CPP/MySLG/Army/ArmyFightDefine.h
+ D:/CPP/MySLG/Army/ArmyTroops.cpp
+ D:/CPP/MySLG/Army/ArmyTroops.h
+ D:/CPP/MySLG/Army/FightHelp.h
+ D:/CPP/MySLG/Army/UnitSoldier.h
 CMakeFiles/MySLG.dir/Army/FightHelp.cpp.obj
+ ../Army/ArmyFightDefine.h
+ ../Army/ArmyTroops.h
  ../Army/UnitSoldier.h
  ../CommonBase/Vector2.h
  ../GameEngine/AutoID.h
  ../GameEngine/Function.h
  ../GameEngine/SingleTon.h
- C:/Users/lsjlkz/CLionProjects/MySLG/Army/FightHelp.cpp
- C:/Users/lsjlkz/CLionProjects/MySLG/Army/FightHelp.h
+ D:/CPP/MySLG/Army/FightHelp.cpp
+ D:/CPP/MySLG/Army/FightHelp.h
 CMakeFiles/MySLG.dir/Army/UnitSoldier.cpp.obj
  ../CommonBase/Vector2.h
  ../GameEngine/AutoID.h
  ../GameEngine/Function.h
  ../GameEngine/SingleTon.h
- C:/Users/lsjlkz/CLionProjects/MySLG/Army/FightHelp.h
- C:/Users/lsjlkz/CLionProjects/MySLG/Army/UnitSoldier.cpp
- C:/Users/lsjlkz/CLionProjects/MySLG/Army/UnitSoldier.h
+ D:/CPP/MySLG/Army/ArmyFightDefine.h
+ D:/CPP/MySLG/Army/ArmyTroops.h
+ D:/CPP/MySLG/Army/FightHelp.h
+ D:/CPP/MySLG/Army/UnitSoldier.cpp
+ D:/CPP/MySLG/Army/UnitSoldier.h
 CMakeFiles/MySLG.dir/CommonBase/Vector2.cpp.obj
- C:/Users/lsjlkz/CLionProjects/MySLG/CommonBase/Vector2.cpp
- C:/Users/lsjlkz/CLionProjects/MySLG/CommonBase/Vector2.h
+ D:/CPP/MySLG/CommonBase/Vector2.cpp
+ D:/CPP/MySLG/CommonBase/Vector2.h
 CMakeFiles/MySLG.dir/GameEngine/AutoID.cpp.obj
- C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/AutoID.cpp
- C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/AutoID.h
- C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/SingleTon.h
+ D:/CPP/MySLG/GameEngine/AutoID.cpp
+ D:/CPP/MySLG/GameEngine/AutoID.h
+ D:/CPP/MySLG/GameEngine/SingleTon.h
 CMakeFiles/MySLG.dir/GameEngine/Function.cpp.obj
- C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/Function.cpp
- C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/Function.h
+ D:/CPP/MySLG/GameEngine/Function.cpp
+ D:/CPP/MySLG/GameEngine/Function.h
 CMakeFiles/MySLG.dir/GameEngine/GameHelp.cpp.obj
- C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/GameHelp.cpp
- C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/GameHelp.h
+ D:/CPP/MySLG/GameEngine/GameHelp.cpp
+ D:/CPP/MySLG/GameEngine/GameHelp.h
 CMakeFiles/MySLG.dir/GameEngine/Process.cpp.obj
- C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/Process.cpp
- C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/Process.h
+ D:/CPP/MySLG/GameEngine/Process.cpp
+ D:/CPP/MySLG/GameEngine/Process.h
 CMakeFiles/MySLG.dir/GameEngine/Tick.cpp.obj
- C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/AutoID.h
- C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/Function.h
- C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/SingleTon.h
- C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/Tick.cpp
- C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/Tick.h
+ D:/CPP/MySLG/GameEngine/AutoID.h
+ D:/CPP/MySLG/GameEngine/Function.h
+ D:/CPP/MySLG/GameEngine/SingleTon.h
+ D:/CPP/MySLG/GameEngine/Tick.cpp
+ D:/CPP/MySLG/GameEngine/Tick.h
 CMakeFiles/MySLG.dir/main.cpp.obj
  ../Army/ArmyFightDefine.h
  ../Army/ArmyTroops.h
@@ -58,4 +62,4 @@ CMakeFiles/MySLG.dir/main.cpp.obj
  ../GameEngine/Function.h
  ../GameEngine/GameHelp.h
  ../GameEngine/SingleTon.h
- C:/Users/lsjlkz/CLionProjects/MySLG/main.cpp
+ D:/CPP/MySLG/main.cpp

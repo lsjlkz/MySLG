@@ -12,7 +12,8 @@
 
 namespace GH{
     void SoldierDead(UnitSoldier unitSoldier);
-//    UnitSoldier CreateSoldier(int x, int y, int moveSpeed, int atk, int def, int hp, ArmyTroops* armyTroops);
+    UnitSoldier* CreateSoldier(int x, int y, int moveSpeed, int atk, int def, int hp, ArmyTroops* armyTroops);
+    UnitSoldier* CreateSoldier(int x, int y, int moveSpeed, int atk, int def, int hp, int armyTroopsID);
     UnitSoldier* CreateSoldier(int x, int y, int moveSpeed, int atk, int def, int hp);
 }
 

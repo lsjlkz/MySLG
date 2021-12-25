@@ -1,7 +1,7 @@
 //
 // Created by lsjlkz on 2021/12/24.
 //
-
+#pragma once
 #ifndef MYSLG_ARMYTROOPS_H
 #define MYSLG_ARMYTROOPS_H
 
@@ -13,6 +13,7 @@
 #include "UnitSoldier.h"
 #include "ArmyFightDefine.h"
 
+class UnitSoldier;
 
 class ArmyTroops:public Base<ArmyTroops> {
 private:
@@ -49,7 +50,7 @@ private:
 public:
     void Init(int armyMaxCount){};
     ArmyTroops* CreateArmyTroops(Vector2 centerXY, int width, int height, int moveSpeed, int atk, int def, int hp);
-    ArmyTroops* GetArmyTroops(int id);
+    static ArmyTroops* GetArmyTroops(int id);
 };
 
 #endif //MYSLG_ARMYTROOPS_H

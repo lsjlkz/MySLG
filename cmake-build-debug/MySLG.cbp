@@ -8,150 +8,148 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug"/>
+				<Option working_dir="D:/CPP/MySLG/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 all"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="MySLG">
-				<Option output="C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug/MySLG.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug"/>
+				<Option output="D:/CPP/MySLG/cmake-build-debug/MySLG.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/CPP/MySLG/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="msvc8"/>
 				<Compiler>
-					<Add directory="C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine"/>
-					<Add directory="C:/Users/lsjlkz/CLionProjects/MySLG/Army"/>
-					<Add directory="C:/Users/lsjlkz/CLionProjects/MySLG/CommonBase"/>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include"/>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+					<Add directory="D:/CPP/MySLG/GameEngine"/>
+					<Add directory="D:/CPP/MySLG/Army"/>
+					<Add directory="D:/CPP/MySLG/CommonBase"/>
+					<Add directory="D:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.28.29910\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 MySLG"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 MySLG"/>
+					<CompileFile command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="MySLG/fast">
-				<Option output="C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug/MySLG.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug"/>
+				<Option output="D:/CPP/MySLG/cmake-build-debug/MySLG.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/CPP/MySLG/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="msvc8"/>
 				<Compiler>
-					<Add directory="C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine"/>
-					<Add directory="C:/Users/lsjlkz/CLionProjects/MySLG/Army"/>
-					<Add directory="C:/Users/lsjlkz/CLionProjects/MySLG/CommonBase"/>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include"/>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+					<Add directory="D:/CPP/MySLG/GameEngine"/>
+					<Add directory="D:/CPP/MySLG/Army"/>
+					<Add directory="D:/CPP/MySLG/CommonBase"/>
+					<Add directory="D:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.28.29910\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 MySLG/fast"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 MySLG/fast"/>
+					<CompileFile command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug"/>
+				<Option working_dir="D:/CPP/MySLG/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
+					<CompileFile command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug"/>
+				<Option working_dir="D:/CPP/MySLG/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\lsjlkz\CLionProjects\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\CPP\MySLG\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/Army/ArmyFightDefine.h">
+		<Unit filename="D:/CPP/MySLG/Army/ArmyFightDefine.h">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/Army/ArmyTroops.cpp">
+		<Unit filename="D:/CPP/MySLG/Army/ArmyTroops.cpp">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/Army/ArmyTroops.h">
+		<Unit filename="D:/CPP/MySLG/Army/ArmyTroops.h">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/Army/FightHelp.cpp">
+		<Unit filename="D:/CPP/MySLG/Army/FightHelp.cpp">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/Army/FightHelp.h">
+		<Unit filename="D:/CPP/MySLG/Army/FightHelp.h">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/Army/UnitSoldier.cpp">
+		<Unit filename="D:/CPP/MySLG/Army/UnitSoldier.cpp">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/Army/UnitSoldier.h">
+		<Unit filename="D:/CPP/MySLG/Army/UnitSoldier.h">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/CommonBase/Vector2.cpp">
+		<Unit filename="D:/CPP/MySLG/CommonBase/Vector2.cpp">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/CommonBase/Vector2.h">
+		<Unit filename="D:/CPP/MySLG/CommonBase/Vector2.h">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/AutoID.cpp">
+		<Unit filename="D:/CPP/MySLG/GameEngine/AutoID.cpp">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/AutoID.h">
+		<Unit filename="D:/CPP/MySLG/GameEngine/AutoID.h">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/Function.cpp">
+		<Unit filename="D:/CPP/MySLG/GameEngine/Function.cpp">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/Function.h">
+		<Unit filename="D:/CPP/MySLG/GameEngine/Function.h">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/GameHelp.cpp">
+		<Unit filename="D:/CPP/MySLG/GameEngine/GameHelp.cpp">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/GameHelp.h">
+		<Unit filename="D:/CPP/MySLG/GameEngine/GameHelp.h">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/Process.cpp">
+		<Unit filename="D:/CPP/MySLG/GameEngine/Process.cpp">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/Process.h">
+		<Unit filename="D:/CPP/MySLG/GameEngine/Process.h">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/SingleTon.h">
+		<Unit filename="D:/CPP/MySLG/GameEngine/SingleTon.h">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/Tick.cpp">
+		<Unit filename="D:/CPP/MySLG/GameEngine/Tick.cpp">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/Tick.h">
+		<Unit filename="D:/CPP/MySLG/GameEngine/Tick.h">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/main.cpp">
+		<Unit filename="D:/CPP/MySLG/main.cpp">
 			<Option target="MySLG"/>
 		</Unit>
-		<Unit filename="C:/Users/lsjlkz/CLionProjects/MySLG/CMakeLists.txt">
+		<Unit filename="D:/CPP/MySLG/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

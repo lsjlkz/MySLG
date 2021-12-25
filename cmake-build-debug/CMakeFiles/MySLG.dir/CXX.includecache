@@ -22,15 +22,15 @@ functional
 
 ../GameEngine/SingleTon.h
 
-C:/Users/lsjlkz/CLionProjects/MySLG/Army/ArmyFightDefine.h
+D:/CPP/MySLG/Army/ArmyFightDefine.h
 
-C:/Users/lsjlkz/CLionProjects/MySLG/Army/ArmyTroops.cpp
+D:/CPP/MySLG/Army/ArmyTroops.cpp
 ArmyTroops.h
-C:/Users/lsjlkz/CLionProjects/MySLG/Army/ArmyTroops.h
+D:/CPP/MySLG/Army/ArmyTroops.h
 FightHelp.h
-C:/Users/lsjlkz/CLionProjects/MySLG/Army/FightHelp.h
+D:/CPP/MySLG/Army/FightHelp.h
 
-C:/Users/lsjlkz/CLionProjects/MySLG/Army/ArmyTroops.h
+D:/CPP/MySLG/Army/ArmyTroops.h
 Vector2.h
 -
 map
@@ -38,19 +38,25 @@ map
 vector
 -
 AutoID.h
-C:/Users/lsjlkz/CLionProjects/MySLG/Army/AutoID.h
+D:/CPP/MySLG/Army/AutoID.h
 Function.h
-C:/Users/lsjlkz/CLionProjects/MySLG/Army/Function.h
+D:/CPP/MySLG/Army/Function.h
 UnitSoldier.h
-C:/Users/lsjlkz/CLionProjects/MySLG/Army/UnitSoldier.h
+D:/CPP/MySLG/Army/UnitSoldier.h
 ArmyFightDefine.h
-C:/Users/lsjlkz/CLionProjects/MySLG/Army/ArmyFightDefine.h
+D:/CPP/MySLG/Army/ArmyFightDefine.h
 
-C:/Users/lsjlkz/CLionProjects/MySLG/Army/FightHelp.h
+D:/CPP/MySLG/Army/FightHelp.h
 UnitSoldier.h
 -
 
-C:/Users/lsjlkz/CLionProjects/MySLG/Army/UnitSoldier.h
+D:/CPP/MySLG/Army/UnitSoldier.cpp
+UnitSoldier.h
+D:/CPP/MySLG/Army/UnitSoldier.h
+FightHelp.h
+D:/CPP/MySLG/Army/FightHelp.h
+
+D:/CPP/MySLG/Army/UnitSoldier.h
 utility
 -
 iostream
@@ -58,7 +64,9 @@ iostream
 Vector2.h
 -
 AutoID.h
-C:/Users/lsjlkz/CLionProjects/MySLG/Army/AutoID.h
+D:/CPP/MySLG/Army/AutoID.h
 Function.h
-C:/Users/lsjlkz/CLionProjects/MySLG/Army/Function.h
+D:/CPP/MySLG/Army/Function.h
+ArmyTroops.h
+D:/CPP/MySLG/Army/ArmyTroops.h
 

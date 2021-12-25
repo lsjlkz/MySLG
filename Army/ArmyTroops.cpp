@@ -16,8 +16,7 @@ ArmyTroops::ArmyTroops(Vector2 centerXY, int width, int height, int moveSpeed, i
     halfHeight = halfHeight > 0 ? halfHeight : 1;
     for(int i = centerXY.GetX() - halfWidth; i < centerXY.GetX() + halfWidth; ++i){
         for(int j = centerXY.GetX() - halfHeight; j < centerXY.GetY() + halfHeight; ++j){
-//            UnitSoldier unitSoldier = GH::CreateSoldier(i,j,moveSpeed,atk,def,hp, this);
-            UnitSoldier* unitSoldier = GH::CreateSoldier(i,j,moveSpeed,atk,def,hp);
+            UnitSoldier* unitSoldier = GH::CreateSoldier(i,j,moveSpeed,atk,def,hp, this);
             soldierMap.insert(std::pair<int, UnitSoldier*>(unitSoldier->GetID(), unitSoldier));
         }
     };
@@ -73,6 +72,7 @@ void ArmyTroops::CircleAttackArmy() {
             return;
         }
         it->second->AttackSoldier(soldier);
+        it++;
     }
 }
 

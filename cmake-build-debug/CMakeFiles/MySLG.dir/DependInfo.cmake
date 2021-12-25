@@ -8,16 +8,16 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/lsjlkz/CLionProjects/MySLG/Army/ArmyTroops.cpp" "C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/Army/ArmyTroops.cpp.obj"
-  "C:/Users/lsjlkz/CLionProjects/MySLG/Army/FightHelp.cpp" "C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/Army/FightHelp.cpp.obj"
-  "C:/Users/lsjlkz/CLionProjects/MySLG/Army/UnitSoldier.cpp" "C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/Army/UnitSoldier.cpp.obj"
-  "C:/Users/lsjlkz/CLionProjects/MySLG/CommonBase/Vector2.cpp" "C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/CommonBase/Vector2.cpp.obj"
-  "C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/AutoID.cpp" "C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/GameEngine/AutoID.cpp.obj"
-  "C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/Function.cpp" "C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/GameEngine/Function.cpp.obj"
-  "C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/GameHelp.cpp" "C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/GameEngine/GameHelp.cpp.obj"
-  "C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/Process.cpp" "C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/GameEngine/Process.cpp.obj"
-  "C:/Users/lsjlkz/CLionProjects/MySLG/GameEngine/Tick.cpp" "C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/GameEngine/Tick.cpp.obj"
-  "C:/Users/lsjlkz/CLionProjects/MySLG/main.cpp" "C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/main.cpp.obj"
+  "D:/CPP/MySLG/Army/ArmyTroops.cpp" "D:/CPP/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/Army/ArmyTroops.cpp.obj"
+  "D:/CPP/MySLG/Army/FightHelp.cpp" "D:/CPP/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/Army/FightHelp.cpp.obj"
+  "D:/CPP/MySLG/Army/UnitSoldier.cpp" "D:/CPP/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/Army/UnitSoldier.cpp.obj"
+  "D:/CPP/MySLG/CommonBase/Vector2.cpp" "D:/CPP/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/CommonBase/Vector2.cpp.obj"
+  "D:/CPP/MySLG/GameEngine/AutoID.cpp" "D:/CPP/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/GameEngine/AutoID.cpp.obj"
+  "D:/CPP/MySLG/GameEngine/Function.cpp" "D:/CPP/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/GameEngine/Function.cpp.obj"
+  "D:/CPP/MySLG/GameEngine/GameHelp.cpp" "D:/CPP/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/GameEngine/GameHelp.cpp.obj"
+  "D:/CPP/MySLG/GameEngine/Process.cpp" "D:/CPP/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/GameEngine/Process.cpp.obj"
+  "D:/CPP/MySLG/GameEngine/Tick.cpp" "D:/CPP/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/GameEngine/Tick.cpp.obj"
+  "D:/CPP/MySLG/main.cpp" "D:/CPP/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "MSVC")
 

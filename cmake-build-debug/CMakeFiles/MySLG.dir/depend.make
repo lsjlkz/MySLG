@@ -11,6 +11,8 @@ CMakeFiles\MySLG.dir\Army\ArmyTroops.cpp.obj: ..\Army\ArmyTroops.h
 CMakeFiles\MySLG.dir\Army\ArmyTroops.cpp.obj: ..\Army\FightHelp.h
 CMakeFiles\MySLG.dir\Army\ArmyTroops.cpp.obj: ..\Army\UnitSoldier.h
 
+CMakeFiles\MySLG.dir\Army\FightHelp.cpp.obj: ..\Army\ArmyFightDefine.h
+CMakeFiles\MySLG.dir\Army\FightHelp.cpp.obj: ..\Army\ArmyTroops.h
 CMakeFiles\MySLG.dir\Army\FightHelp.cpp.obj: ..\Army\UnitSoldier.h
 CMakeFiles\MySLG.dir\Army\FightHelp.cpp.obj: ..\CommonBase\Vector2.h
 CMakeFiles\MySLG.dir\Army\FightHelp.cpp.obj: ..\GameEngine\AutoID.h
@@ -23,6 +25,8 @@ CMakeFiles\MySLG.dir\Army\UnitSoldier.cpp.obj: ..\CommonBase\Vector2.h
 CMakeFiles\MySLG.dir\Army\UnitSoldier.cpp.obj: ..\GameEngine\AutoID.h
 CMakeFiles\MySLG.dir\Army\UnitSoldier.cpp.obj: ..\GameEngine\Function.h
 CMakeFiles\MySLG.dir\Army\UnitSoldier.cpp.obj: ..\GameEngine\SingleTon.h
+CMakeFiles\MySLG.dir\Army\UnitSoldier.cpp.obj: ..\Army\ArmyFightDefine.h
+CMakeFiles\MySLG.dir\Army\UnitSoldier.cpp.obj: ..\Army\ArmyTroops.h
 CMakeFiles\MySLG.dir\Army\UnitSoldier.cpp.obj: ..\Army\FightHelp.h
 CMakeFiles\MySLG.dir\Army\UnitSoldier.cpp.obj: ..\Army\UnitSoldier.cpp
 CMakeFiles\MySLG.dir\Army\UnitSoldier.cpp.obj: ..\Army\UnitSoldier.h

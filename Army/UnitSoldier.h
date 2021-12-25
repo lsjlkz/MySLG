@@ -13,7 +13,9 @@
 
 #include "AutoID.h"
 #include "Function.h"
-//#include "ArmyTroops.h"
+#include "ArmyTroops.h"
+
+class ArmyTroops;
 
 
 class UnitSoldier:public Base<UnitSoldier>{
@@ -24,14 +26,16 @@ private:
     int _atk;
     int _def;
     int _hp;
-//    ArmyTroops* _inArmyTroops;
+    int _armyTroopsID;
+    ArmyTroops* _inArmyTroops;
 
 public:
     Function<UnitSoldier>* _deadCallBack;
 
 
 public:
-//    UnitSoldier(Vector2 xy, int moveSpeed, int atk, int def, int hp, ArmyTroops* armyTroops);
+    UnitSoldier(Vector2 xy, int moveSpeed, int atk, int def, int hp, ArmyTroops* armyTroops);
+    UnitSoldier(Vector2 xy, int moveSpeed, int atk, int def, int hp, int armyTroopsID);
     UnitSoldier(Vector2 xy, int moveSpeed, int atk, int def, int hp);
 
     long GetID();
@@ -50,7 +54,7 @@ public:
 
     int GetAtk();
 
-//    ArmyTroops* GetArmyTroops();
+    ArmyTroops* GetArmyTroops();
 
 };
 
