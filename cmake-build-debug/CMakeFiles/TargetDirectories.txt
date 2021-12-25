@@ -1,0 +1,3 @@
+C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir
+C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/lsjlkz/CLionProjects/MySLG/cmake-build-debug/CMakeFiles/rebuild_cache.dir
