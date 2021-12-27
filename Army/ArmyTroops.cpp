@@ -53,6 +53,7 @@ void ArmyTroops::SetAttackEnd() {
     _state = StateHold;
     _targetArmyID = 0;
     _targetArmy = nullptr;
+    ArmyManager::Instance()->RemoveAttackArmy(_id);
 
 }
 

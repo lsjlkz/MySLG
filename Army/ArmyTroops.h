@@ -34,7 +34,6 @@ public:
     ArmyTroops(Vector2 centerXY, int width, int height, int moveSpeed, int atk, int def, int hp);
     void AttackArmy(int armyID);    // 攻击这个部队，搞他
     void DefendArmy(ArmyTroops* army);    // 防守这个部队，搞他
-    void StopAttack();
     UnitSoldier* GetOneSoldier();
     long GetID(){return _id;}
     void SetAttackBegin();
@@ -60,7 +59,7 @@ public:
     bool CircleFunc();
     bool CircleAttack();
     void AddDeadArmy(int id);
-    bool CircleCheckDead();
+    bool CircleCheckDead();     // 为什么要单独出来，方便对死亡的部队进行其他处理。
     void AddAttackArmy(int id);
     void RemoveAttackArmy(int id);
 };
