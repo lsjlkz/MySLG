@@ -34,9 +34,9 @@ public:
 
 
 public:
-    UnitSoldier(Vector2 xy, int moveSpeed, int atk, int def, int hp, ArmyTroops* armyTroops);
-    UnitSoldier(Vector2 xy, int moveSpeed, int atk, int def, int hp, int armyTroopsID);
-    UnitSoldier(Vector2 xy, int moveSpeed, int atk, int def, int hp);
+    UnitSoldier(int id, Vector2 xy, int moveSpeed, int atk, int def, int hp, ArmyTroops* armyTroops);
+    UnitSoldier(int id, Vector2 xy, int moveSpeed, int atk, int def, int hp, int armyTroopsID);
+    UnitSoldier(int id, Vector2 xy, int moveSpeed, int atk, int def, int hp);
 
     long GetID();
 

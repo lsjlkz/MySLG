@@ -5,8 +5,8 @@
 #include "UnitSoldier.h"
 #include "FightHelp.h"
 
-UnitSoldier::UnitSoldier(Vector2 xy, int moveSpeed, int atk, int def, int hp) : Base<UnitSoldier>(this){
-    _id = AutoID::GetAutoID();
+UnitSoldier::UnitSoldier(int id, Vector2 xy, int moveSpeed, int atk, int def, int hp) : Base<UnitSoldier>(this){
+    _id = id;
     _xy = xy;
     _atk = atk;
     _def = def;
@@ -16,8 +16,8 @@ UnitSoldier::UnitSoldier(Vector2 xy, int moveSpeed, int atk, int def, int hp) : 
 
 }
 
-UnitSoldier::UnitSoldier(Vector2 xy, int moveSpeed, int atk, int def, int hp, ArmyTroops* armyTroops) : Base<UnitSoldier>(this){
-    _id = AutoID::GetAutoID();
+UnitSoldier::UnitSoldier(int id, Vector2 xy, int moveSpeed, int atk, int def, int hp, ArmyTroops* armyTroops) : Base<UnitSoldier>(this){
+    _id = id;
     _xy = xy;
     _atk = atk;
     _def = def;
@@ -28,8 +28,8 @@ UnitSoldier::UnitSoldier(Vector2 xy, int moveSpeed, int atk, int def, int hp, Ar
 
 }
 
-UnitSoldier::UnitSoldier(Vector2 xy, int moveSpeed, int atk, int def, int hp, int armyTroopsID) : Base<UnitSoldier>(this){
-    _id = AutoID::GetAutoID();
+UnitSoldier::UnitSoldier(int id, Vector2 xy, int moveSpeed, int atk, int def, int hp, int armyTroopsID) : Base<UnitSoldier>(this){
+    _id = id;
     _xy = xy;
     _atk = atk;
     _def = def;

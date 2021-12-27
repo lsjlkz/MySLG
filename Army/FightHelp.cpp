@@ -14,20 +14,20 @@ void GH::SoldierDead(UnitSoldier unitSoldier){
 }
 
 
-UnitSoldier* GH::CreateSoldier(int x, int y, int moveSpeed, int atk, int def, int hp, ArmyTroops* armyTroops){
+UnitSoldier* GH::CreateSoldier(int id, int x, int y, int moveSpeed, int atk, int def, int hp, ArmyTroops* armyTroops){
 
-    UnitSoldier* unitSoldier = new UnitSoldier(Vector2(x, y), moveSpeed, atk, def, hp, armyTroops);
+    UnitSoldier* unitSoldier = new UnitSoldier(id, Vector2(x, y), moveSpeed, atk, def, hp, armyTroops);
     return unitSoldier;
 }
-UnitSoldier* GH::CreateSoldier(int x, int y, int moveSpeed, int atk, int def, int hp, int armyTroopsID){
+UnitSoldier* GH::CreateSoldier(int id, int x, int y, int moveSpeed, int atk, int def, int hp, int armyTroopsID){
 
-    UnitSoldier* unitSoldier = new UnitSoldier(Vector2(x, y), moveSpeed, atk, def, hp, armyTroopsID);
+    UnitSoldier* unitSoldier = new UnitSoldier(id, Vector2(x, y), moveSpeed, atk, def, hp, armyTroopsID);
     return unitSoldier;
 }
 
-UnitSoldier* GH::CreateSoldier(int x, int y, int moveSpeed, int atk, int def, int hp){
+UnitSoldier* GH::CreateSoldier(int id, int x, int y, int moveSpeed, int atk, int def, int hp){
 
-    UnitSoldier* unitSoldier = new UnitSoldier(Vector2(x, y), moveSpeed, atk, def, hp);
+    UnitSoldier* unitSoldier = new UnitSoldier(id, Vector2(x, y), moveSpeed, atk, def, hp);
     return unitSoldier;
 }
 
