@@ -8,7 +8,7 @@
 //回调
 //TODO 外面矩阵去除这个士兵
 void GH::SoldierDead(UnitSoldier unitSoldier){
-    std::cout << unitSoldier.GetID() << " dead." <<std::endl;
+    std::cout << "army:(" << unitSoldier.GetArmyTroopsID() << "):soldier(" << unitSoldier.GetID() << ") dead." <<std::endl;
 
     unitSoldier.GetArmyTroops()->RemoveSoldier(unitSoldier.GetID());
 }
@@ -29,6 +29,13 @@ UnitSoldier* GH::CreateSoldier(int id, int x, int y, int moveSpeed, int atk, int
 
     UnitSoldier* unitSoldier = new UnitSoldier(id, Vector2(x, y), moveSpeed, atk, def, hp);
     return unitSoldier;
+}
+
+void GH::ArmyTroopsDead(ArmyTroops armyTroopsDead) {
+    std::cout << armyTroopsDead.GetID() << " dismiss." <<std::endl;
+
+    ArmyManager::Instance()->AddDeadArmy(armyTroopsDead.GetID());
+
 }
 
 

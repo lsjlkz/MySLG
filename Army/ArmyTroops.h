@@ -28,6 +28,9 @@ private:
     std::map<int, UnitSoldier*> soldierMap;
 
 public:
+    Function<ArmyTroops>* _deadCallBack;
+
+public:
     ArmyTroops(Vector2 centerXY, int width, int height, int moveSpeed, int atk, int def, int hp);
     void AttackArmy(int armyID);    // 攻击这个部队，搞他
     void DefendArmy(ArmyTroops* army);    // 防守这个部队，搞他
@@ -36,7 +39,7 @@ public:
     long GetID(){return _id;}
     void SetAttackBegin();
     void SetAttackEnd();
-    void CircleAttackArmy();
+    bool CircleAttackArmy();
     void SetArmyMoveTo();
     void DecHp(int atk);
     void RemoveSoldier(int soldierID);
@@ -45,12 +48,21 @@ public:
 class ArmyManager:public SingleTon<ArmyManager>{
 private:
     std::map<int, ArmyTroops*> armyMap;
+    std::vector<int> attackArmyVec;
+    std::vector<int> deadArmyVec;
 
 
 public:
     void Init(int armyMaxCount){};
     ArmyTroops* CreateArmyTroops(Vector2 centerXY, int width, int height, int moveSpeed, int atk, int def, int hp);
-    static ArmyTroops* GetArmyTroops(int id);
+    ArmyTroops* GetArmyTroops(int id);
+    void RemoveArmyTroops(int id);
+    bool CircleFunc();
+    bool CircleAttack();
+    void AddDeadArmy(int id);
+    bool CircleCheckDead();
+    void AddAttackArmy(int id);
+    void RemoveAttackArmy(int id);
 };
 
 #endif //MYSLG_ARMYTROOPS_H

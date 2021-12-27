@@ -48,13 +48,15 @@ public:
 
     virtual bool canAttack();
 
-    void DecHp(UnitSoldier* army);
+    void DecHp(UnitSoldier* unitSoldier);
 
     void AttackSoldier(UnitSoldier* army);
 
     int GetAtk();
 
     ArmyTroops* GetArmyTroops();
+
+    int GetArmyTroopsID(){return _armyTroopsID;}
 
 };
 

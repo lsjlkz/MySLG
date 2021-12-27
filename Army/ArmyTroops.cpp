@@ -22,6 +22,7 @@ ArmyTroops::ArmyTroops(Vector2 centerXY, int width, int height, int moveSpeed, i
     };
     _targetArmyID = 0;
     _targetArmy = nullptr;
+    _deadCallBack = new Function<ArmyTroops>(GH::ArmyTroopsDead, *this);
 }
 
 void ArmyTroops::AttackArmy(int armyID) {
@@ -45,7 +46,7 @@ void ArmyTroops::DefendArmy(ArmyTroops* army) {
 
 void ArmyTroops::SetAttackBegin() {
     _state = StateFight;
-    CircleAttackArmy();
+    ArmyManager::Instance()->AddAttackArmy(_id);
 }
 
 void ArmyTroops::SetAttackEnd() {
@@ -59,32 +60,41 @@ void ArmyTroops::SetArmyMoveTo() {
     _state = StateMove;
 }
 
-void ArmyTroops::CircleAttackArmy() {
+bool ArmyTroops::CircleAttackArmy() {
     if(_state != StateFight){
-        return;
+        return false;
     }
-    // TODO
+    if(soldierMap.empty()){
+        _targetArmy->SetAttackEnd();
+        SetAttackEnd();
+        _deadCallBack->Call();
+        return false;
+    }
     std::map<int, UnitSoldier*>::iterator it;
     it = soldierMap.begin();
     while(it != soldierMap.end()){
+        if(!it->second->canAttack()){
+            continue;
+        }
         UnitSoldier* soldier = _targetArmy->GetOneSoldier();
         if(soldier == nullptr){
-            return;
+            return true;
         }
         it->second->AttackSoldier(soldier);
         it++;
     }
+    return true;
 }
 
 void ArmyTroops::DecHp(int atk) {
     std::map<int, UnitSoldier*>::iterator it;
     it = soldierMap.begin();
     while(it != soldierMap.end()){
+        it++;
     }
 }
 
 UnitSoldier *ArmyTroops::GetOneSoldier() {
-//    std::map<int, UnitSoldier*>::iterator it;
     auto it = soldierMap.begin();
     if(it == soldierMap.end()){
         return nullptr;
@@ -100,21 +110,75 @@ void ArmyTroops::RemoveSoldier(int soldierID) {
         delete soldier;
         soldierMap.erase(soldierID);
     }
-
 }
 
 
 ArmyTroops* ArmyManager::CreateArmyTroops(Vector2 centerXY, int width, int height, int moveSpeed, int atk, int def, int hp) {
     ArmyTroops* armyTroops = new ArmyTroops(centerXY, width, height, moveSpeed, atk, def, hp);
     std::cout << "new army " <<armyTroops->GetID() << std::endl;
-    ArmyManager::Instance()->armyMap.insert(std::pair<int, ArmyTroops*>(armyTroops->GetID(), armyTroops));
+    armyMap.insert(std::pair<int, ArmyTroops*>(armyTroops->GetID(), armyTroops));
     return armyTroops;
 }
 
 ArmyTroops* ArmyManager::GetArmyTroops(int id) {
-    ArmyTroops* armyTroops = ArmyManager::Instance()->armyMap.at(id);
+    ArmyTroops* armyTroops = armyMap.at(id);
     if(armyTroops != nullptr){
         return armyTroops;
     }
     return nullptr;
 }
+
+void ArmyManager::RemoveArmyTroops(int id) {
+    std::remove(attackArmyVec.begin(), attackArmyVec.end(), id);
+    ArmyTroops* armyTroops = armyMap.at(id);
+    if(armyTroops != nullptr){
+        armyMap.erase(id);
+        delete armyTroops;
+    }
+}
+
+
+bool ArmyManager::CircleAttack() {
+    auto it = armyMap.begin();
+    bool fightFlag = false;
+    while(it != armyMap.end()){
+        fightFlag = it->second->CircleAttackArmy() == true? true:fightFlag;
+        it++;
+    }
+    return fightFlag;
+}
+
+void ArmyManager::AddDeadArmy(int id) {
+    deadArmyVec.emplace_back(id);
+}
+
+bool ArmyManager::CircleCheckDead() {
+    auto it = deadArmyVec.begin();
+    while(it != deadArmyVec.end()){
+        RemoveArmyTroops(*it);
+        it++;
+    }
+    deadArmyVec.clear();
+    return true;
+}
+
+bool ArmyManager::CircleFunc() {
+    bool flag = false;
+    if(!attackArmyVec.empty()){
+        flag = CircleAttack() ? true : flag;
+    }
+    if(!deadArmyVec.empty()){
+        flag = CircleCheckDead() ? true : flag;
+    }
+    return flag;
+}
+
+void ArmyManager::AddAttackArmy(int id) {
+    attackArmyVec.emplace_back(id);
+}
+
+void ArmyManager::RemoveAttackArmy(int id) {
+    std::remove(attackArmyVec.begin(), attackArmyVec.end(), id);
+}
+
+
