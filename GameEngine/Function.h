@@ -8,6 +8,7 @@
 #include <functional>
 
 
+// 参数基类
 template<class T>
 class Base{
 protected:
@@ -18,6 +19,7 @@ public:
     }
 };
 
+// 回调函数
 template<typename Base>
 class Function{
 private:
@@ -25,6 +27,7 @@ private:
     Base m_Args;
 public:
     Function(std::function<void(Base)> callback, Base args):m_CallBack(callback), m_Args(args){}
+    // 调用回调函数
     void Call(){
         m_CallBack(m_Args);
     }

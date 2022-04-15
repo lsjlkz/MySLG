@@ -32,6 +32,7 @@ UnitSoldier* GH::CreateSoldier(int id, int x, int y, int moveSpeed, int atk, int
 }
 
 void GH::ArmyTroopsDead(ArmyTroops armyTroopsDead) {
+    // 部队解散
     std::cout << armyTroopsDead.GetID() << " dismiss." <<std::endl;
 
     ArmyManager::Instance()->AddDeadArmy(armyTroopsDead.GetID());

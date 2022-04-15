@@ -11,6 +11,7 @@
 //#include "ArmyTroops.h"
 
 namespace GH{
+    // 死亡回调
     void SoldierDead(UnitSoldier unitSoldier);
     UnitSoldier* CreateSoldier(int id, int x, int y, int moveSpeed, int atk, int def, int hp, ArmyTroops* armyTroops);
     UnitSoldier* CreateSoldier(int id, int x, int y, int moveSpeed, int atk, int def, int hp, int armyTroopsID);

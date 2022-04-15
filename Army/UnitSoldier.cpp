@@ -60,6 +60,7 @@ int UnitSoldier::GetAtk() {
 }
 
 void UnitSoldier::DecHp(UnitSoldier *unitSoldier) {
+    // 敌方扣血
     int atk = unitSoldier->GetAtk();
     int decHp = std::max(atk - _def, 1);
     _hp -= decHp;

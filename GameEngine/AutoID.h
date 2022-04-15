@@ -16,6 +16,7 @@ private:
 public:
     AutoID(){};
     ~AutoID(){};
+    // 获取唯一id
     static long GetAutoID(){
         return ++curID;
     }

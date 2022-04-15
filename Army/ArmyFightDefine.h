@@ -6,9 +6,9 @@
 #define MYSLG_ARMYFIGHTDEFINE_H
 
 
-#define StateFight  1
-#define StateMove   2
-#define StateHold   3
+#define StateFight  1   // 攻击中
+#define StateMove   2   // 移动中
+#define StateHold   3   // 保持中，死亡了
 
 
 
