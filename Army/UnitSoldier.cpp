@@ -64,7 +64,7 @@ void UnitSoldier::DecHp(UnitSoldier *unitSoldier) {
     int atk = unitSoldier->GetAtk();
     int decHp = std::max(atk - _def, 1);
     _hp -= decHp;
-    std::cout << "army:(" << unitSoldier->_armyTroopsID <<"):soldier(" << unitSoldier->GetID() << ") attack army:(" << _armyTroopsID << "):soldier(" << _id << "), dec " << decHp << " hp, left " << _hp << " hp." << std::endl;
+//    std::cout << "army:(" << unitSoldier->_armyTroopsID <<"):soldier(" << unitSoldier->GetID() << ") attack army:(" << _armyTroopsID << "):soldier(" << _id << "), dec " << decHp << " hp, left " << _hp << " hp." << std::endl;
     if(_hp <= 0){
         _deadCallBack->Call();
     }

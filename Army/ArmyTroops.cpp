@@ -8,7 +8,6 @@
 ArmyTroops::ArmyTroops(Vector2 centerXY, int width, int height, int moveSpeed, int atk, int def, int hp):_centerXY(centerXY), _width(width), _height(height),
                                                                                                          Base<ArmyTroops>(this){
     _id = AutoID::GetAutoID();
-    std::cout << "create army " << _id << std::endl;
     _centerXY = centerXY;
     int halfWidth = width / 2 ;
     int halfHeight = height / 2;
@@ -89,11 +88,13 @@ bool ArmyTroops::CircleAttackArmy() {
     // 让每一个士兵都攻击一下
     while(it != soldierMap.end()){
         if(!it->second->canAttack()){
+			it++;
             continue;
         }
         // 获取对面的一个士兵来攻击
         UnitSoldier* soldier = _targetArmy->GetOneSoldier();
         if(soldier == nullptr){
+			it++;
             continue;
         }
         // 攻击随机的这个士兵
@@ -132,12 +133,11 @@ void ArmyTroops::RemoveSoldier(int soldierID) {
     }
 }
 
-
 ArmyTroops* ArmyManager::CreateArmyTroops(Vector2 centerXY, int width, int height, int moveSpeed, int atk, int def, int hp) {
     // 生成一个部队
     ArmyTroops* armyTroops = new ArmyTroops(centerXY, width, height, moveSpeed, atk, def, hp);
-    std::cout << "new army " <<armyTroops->GetID() << std::endl;
     // 添加近部队字典中
+	std::cout << "army:" << moveSpeed << "," << atk << "," << def << "," << hp << std::endl;
     armyMap.insert(std::pair<int, ArmyTroops*>(armyTroops->GetID(), armyTroops));
     return armyTroops;
 }
@@ -193,10 +193,10 @@ bool ArmyManager::CircleFunc() {
     // 部队管理循环
     bool flag = false;
     if(!attackArmyVec.empty()){
-        flag = CircleAttack() ? true : flag;
+        flag = CircleAttack() || flag;
     }
     if(!deadArmyVec.empty()){
-        flag = CircleCheckDead() ? true : flag;
+        flag = CircleCheckDead() || flag;
     }
     return flag;
 }
@@ -209,6 +209,76 @@ void ArmyManager::AddAttackArmy(int id) {
 void ArmyManager::RemoveAttackArmy(int id) {
     // 部队不攻击了，移除
     std::remove(attackArmyVec.begin(), attackArmyVec.end(), id);
+}
+
+int lua_create_new_army(lua_State* L){
+	// 参数：x, y, width, height, speed, atk, def, hp
+	luaL_checktype(L, 1, LUA_TNUMBER);
+	luaL_checktype(L, 2, LUA_TNUMBER);
+	luaL_checktype(L, 3, LUA_TNUMBER);
+	luaL_checktype(L, 4, LUA_TNUMBER);
+	luaL_checktype(L, 5, LUA_TNUMBER);
+	luaL_checktype(L, 6, LUA_TNUMBER);
+	luaL_checktype(L, 7, LUA_TNUMBER);
+	luaL_checktype(L, 8, LUA_TNUMBER);
+	Vector2 vector2((int)lua_tointeger(L, 1),(int)lua_tointeger(L, 2));
+	int width = (int)lua_tointeger(L, 3);
+	int height = (int)lua_tointeger(L, 4);
+	int moveSpeed = (int)lua_tointeger(L, 5);
+	int atk = (int)lua_tointeger(L, 6);
+	int def = (int)lua_tointeger(L, 7);
+	int hp = (int)lua_tointeger(L, 8);
+	// 清空栈
+	lua_settop(L, 0);
+	// 先构造Lua对象可识别的指针
+	ArmyTroops** pArmyTroopsRef = (ArmyTroops**) lua_newuserdata(L, sizeof(ArmyTroops*));
+	// 用这个指针指向的地方构造一个类实例
+	*pArmyTroopsRef = ArmyManager::Instance()->CreateArmyTroops(
+			vector2, width,height,moveSpeed,atk,def,hp);
+	luaL_getmetatable(L, "ArmyTroops");
+	lua_setmetatable(L, -2);
+	return 1;
+}
+
+int lua_army_attack(lua_State* L){
+	// 参数：army,otherArmy
+	ArmyTroops** army = (ArmyTroops**)luaL_checkudata(L, 1, "ArmyTroops");
+	ArmyTroops** otherArmy = (ArmyTroops**)luaL_checkudata(L, 2, "ArmyTroops");
+	// 清空栈
+	lua_settop(L, 0);
+	(*army)->AttackArmy((*otherArmy)->GetID());
+	return 0;
+}
+
+int lua_army_get_id(lua_State* L){
+	// 参数army
+	ArmyTroops** army = (ArmyTroops**)luaL_checkudata(L, 1, "ArmyTroops");
+	// 清空栈
+	lua_settop(L, 0);
+	lua_pushinteger(L, (*army)->GetID());
+	return 1;
+}
+
+int lua_army_auto_gc(lua_State* L){
+	ArmyTroops** army = (ArmyTroops**)luaL_checkudata(L, 1, "ArmyTroops");
+	luaL_argcheck(L, army != nullptr, 1, "invalid user data");
+	if(army){
+		delete *army;
+	}
+	return 0;
+}
+
+int luaopen_army_libs(lua_State *L){
+	//创建全局元表，如果LUA_REGISTRYINDEX注册表没有这个元表，创建一个新表添加到注册表中
+	luaL_newmetatable(L, "ArmyTroops");
+	//将元表作为一个副本压栈到位置-1，刚刚创建的元表位置-2
+	lua_pushvalue(L, -1);
+
+	lua_setfield(L, -2, "__index");
+	luaL_setfuncs(L, lua_reg_army_funcs, 0);
+	// 创建新表，压函数
+	luaL_newlib(L, lua_reg_army_create_funcs);
+	return 1;
 }
 
 

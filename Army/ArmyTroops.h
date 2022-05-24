@@ -6,14 +6,37 @@
 #define MYSLG_ARMYTROOPS_H
 
 #include <Vector2.h>
-#include <map>
-#include <vector>
+#include "SingleTon.h"
 #include "AutoID.h"
 #include "Function.h"
 #include "UnitSoldier.h"
 #include "ArmyFightDefine.h"
+#include "LuaEngine.h"
 
 class UnitSoldier;
+
+
+int lua_create_new_army(lua_State* L);
+
+
+
+int lua_army_attack(lua_State* L);
+int lua_army_get_id(lua_State* L);
+int lua_army_auto_gc(lua_State* L);
+
+
+static const luaL_Reg lua_reg_army_create_funcs[] = {
+		{"Create", lua_create_new_army},
+		{NULL, NULL},
+};
+
+static const luaL_Reg lua_reg_army_funcs[] = {
+		{"AttackArmy", lua_army_attack},
+		{"GetID", lua_army_get_id},
+		{NULL, NULL},
+};
+
+int luaopen_army_libs(lua_State* L);
 
 class ArmyTroops:public Base<ArmyTroops> {
 private:
@@ -63,5 +86,6 @@ public:
     void AddAttackArmy(int id);
     void RemoveAttackArmy(int id);
 };
+
 
 #endif //MYSLG_ARMYTROOPS_H

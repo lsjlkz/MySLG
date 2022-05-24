@@ -6,6 +6,9 @@
 #ifndef MYSLG_SINGLETON_H
 #define MYSLG_SINGLETON_H
 
+#include <vector>
+#include <map>
+#include "iostream"
 
 
 template<typename T>
