@@ -4,7 +4,22 @@
 
 #ifndef MYSLG_VECTOR2_H
 #define MYSLG_VECTOR2_H
+#include "LuaEngine.h"
 
+int lua_get_vector(lua_State* L);
+int lua_create_vector(lua_State* L);
+
+static const luaL_Reg lua_reg_vector_create_funcs[] = {
+		{"Create", lua_create_vector},
+		{NULL, NULL},
+};
+
+static const luaL_Reg lua_reg_vector_funcs[] = {
+		{"GetXY", lua_get_vector},
+		{NULL, NULL},
+};
+
+int luaopen_vector_libs(lua_State* L);
 
 class Vector2 {
 private:

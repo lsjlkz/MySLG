@@ -18,8 +18,6 @@ class UnitSoldier;
 
 int lua_create_new_army(lua_State* L);
 
-
-
 int lua_army_attack(lua_State* L);
 int lua_army_get_id(lua_State* L);
 int lua_army_auto_gc(lua_State* L);
@@ -33,6 +31,7 @@ static const luaL_Reg lua_reg_army_create_funcs[] = {
 static const luaL_Reg lua_reg_army_funcs[] = {
 		{"AttackArmy", lua_army_attack},
 		{"GetID", lua_army_get_id},
+		{"__gc", lua_army_auto_gc},
 		{NULL, NULL},
 };
 

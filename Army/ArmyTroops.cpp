@@ -261,10 +261,8 @@ int lua_army_get_id(lua_State* L){
 
 int lua_army_auto_gc(lua_State* L){
 	ArmyTroops** army = (ArmyTroops**)luaL_checkudata(L, 1, "ArmyTroops");
-	luaL_argcheck(L, army != nullptr, 1, "invalid user data");
-	if(army){
-		delete *army;
-	}
+	luaL_argcheck(L, army != nullptr, 1, "invalid ArmyTroops");
+	GH::ArmyTroopsDead(**army);
 	return 0;
 }
 
