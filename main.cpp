@@ -32,12 +32,13 @@ void TestArmy() {
 int main() {
 	AutoID::New();
 	ArmyManager::New();
+	GameServer::New();
 	LuaEngine::New();
 	LuaEngine::Instance()->Init();
-	LuaEngine::Instance()->executeString("print('hello world')");
+	LuaEngine::Instance()->executeString("LuaEngine Init Successfully");
 	RegLuaModule();
-	LuaEngine::Instance()->LoadFile("../LuaCode/army_attack.lua");
+	LuaEngine::Instance()->DoFile("../LuaCode/Logic/GSInit.lua");
 //	TestArmy();
-	circle_func();
+//	circle_func();
     return 0;
 }

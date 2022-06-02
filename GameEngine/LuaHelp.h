@@ -6,10 +6,12 @@
 #define MYSLG_LUAHELP_H
 
 #include "ArmyTroops.h"
+#include "LuaGameServer.h"
 
 static luaL_Reg lua_reg_libs[] = {
 		{"base", luaopen_base},
 		{"army_ctrl", luaopen_army_libs},
+		{"cGameServer", luaopen_luagameserver_libs},
 		{NULL, NULL}
 };
 

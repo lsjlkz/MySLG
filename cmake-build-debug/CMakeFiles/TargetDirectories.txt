@@ -1,3 +1,0 @@
-D:/CPP/MySLG/cmake-build-debug/CMakeFiles/MySLG.dir
-D:/CPP/MySLG/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/CPP/MySLG/cmake-build-debug/CMakeFiles/rebuild_cache.dir

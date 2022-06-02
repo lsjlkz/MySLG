@@ -35,6 +35,7 @@ public:
 	int LuaReg();
 
 	int LoadFile(const char* filepath);
+	int DoFile(const char* filepath);
 
 	void test();
 
