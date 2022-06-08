@@ -29,16 +29,14 @@ void TestArmy() {
 ////	armyTroops1->AttackArmy(armyTroops2->GetID());
 //}
 
-int main() {
+int main(int argc, char* argv[]) {
 	AutoID::New();
 	ArmyManager::New();
 	GameServer::New();
+	GameServer::Instance()->Init(1);
 	LuaEngine::New();
 	LuaEngine::Instance()->Init();
-	LuaEngine::Instance()->executeString("LuaEngine Init Successfully");
 	RegLuaModule();
-	LuaEngine::Instance()->DoFile("../LuaCode/Logic/GSInit.lua");
-//	TestArmy();
-//	circle_func();
+	LuaEngine::Instance()->DoFile("../LuaCode/Server/GSInit.lua");
     return 0;
 }

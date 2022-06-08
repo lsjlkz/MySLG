@@ -8,6 +8,16 @@ int LuaGameServer::CreateNetwork(int MaxConnect, int Thread, int Port) {
 	return GameServer::Instance()->CreateNetwork(MaxConnect, Thread, Port);
 }
 
+int LuaGameServer::GetGameServerID() {
+	return GameServer::Instance()->GetGameServerID();
+}
+
+int get_gameserver_id(lua_State* L){
+	lua_settop(L, 0);
+	lua_pushnumber(L, LuaGameServer::GetGameServerID());
+	return 1;
+}
+
 int create_network(lua_State* L){
 	luaL_checktype(L, 1, LUA_TNUMBER);
 	luaL_checktype(L, 2, LUA_TNUMBER);

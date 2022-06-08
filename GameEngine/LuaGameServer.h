@@ -8,10 +8,20 @@
 #include "GameServer.h"
 #include "LuaEngine.h"
 
-int create_network(lua_State* L);
 
+class LuaGameServer{
+public:
+	static int GetGameServerID();
+	static int CreateNetwork(int MaxConnect, int Thread, int Port);
+};
+
+
+
+int create_network(lua_State* L);
+int get_gameserver_id(lua_State* L);
 static const luaL_Reg lua_reg_gameserver_func[] = {
 		{"CreateNetwork", create_network},
+		{"GetGameServerID", get_gameserver_id},
 		{NULL, NULL}
 };
 
@@ -21,10 +31,6 @@ static const luaL_Reg lua_reg_gameserver_create_funcs[] = {
 
 int luaopen_luagameserver_libs(lua_State* L);
 
-class LuaGameServer{
-public:
-	static int CreateNetwork(int MaxConnect, int Thread, int Port);
-};
 
 
 #endif //MYSLG_LUAGAMESERVER_H

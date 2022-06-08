@@ -10,9 +10,13 @@
 class GameServer: public SingleTon<GameServer>{
 public:
 	int CreateNetwork(int MaxConnect, int Thread, int Port);
+	void SetGameServerID(int id);
+	int GetGameServerID(){return GameServerID;};
+	int Init(int id);
 
 private:
 	GENetWork* geNetWork;
+	int GameServerID = 0;
 };
 
 

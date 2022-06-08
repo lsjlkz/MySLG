@@ -52,6 +52,7 @@ bool LuaEngine::Init() {
 	}
 	L = luaL_newstate();
 	luaL_openlibs(L);
+	executeString("LuaEngine Init Successfully");
 	return true;
 }
 
