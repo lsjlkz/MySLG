@@ -12,9 +12,28 @@ int LuaGameServer::GetGameServerID() {
 	return GameServer::Instance()->GetGameServerID();
 }
 
+int LuaGameServer::RegLuaFunc(lua_State *L) {
+	// 获取这个函数
+	// TODO
+	// 对函数名字进行哈希然后存到hashmap里，还有这个key和ref，需要调用的时候就直接通过全局表获取到这个ref，然后call
+//	int key = luaL_ref(L, 0);
+//	// 清空栈
+//	lua_settop(L, 0);
+//	// 创建一个全局注册表，然后把所有的lua注册函数放到这里
+//	luaL_newmetatable(L, "LuaFunction");
+//	//将元表作为一个副本压栈到位置-1，刚刚创建的元表位置-2
+//	lua_pushvalue(L, -1);
+//	lua_setfield(L, -2, "__index");
+	return 0;
+}
+
+int reg_lua_func(lua_State* L){
+	return 0;
+}
+
 int get_gameserver_id(lua_State* L){
 	lua_settop(L, 0);
-	lua_pushnumber(L, LuaGameServer::GetGameServerID());
+	lua_pushinteger(L, LuaGameServer::GetGameServerID());
 	return 1;
 }
 

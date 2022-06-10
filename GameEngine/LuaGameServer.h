@@ -10,15 +10,19 @@
 
 
 class LuaGameServer{
+private:
+	std::unordered_map<int, int> map;
 public:
 	static int GetGameServerID();
 	static int CreateNetwork(int MaxConnect, int Thread, int Port);
+	static int RegLuaFunc(lua_State* L);
 };
 
 
 
 int create_network(lua_State* L);
 int get_gameserver_id(lua_State* L);
+int reg_lua_func(lua_State* L);
 static const luaL_Reg lua_reg_gameserver_func[] = {
 		{"CreateNetwork", create_network},
 		{"GetGameServerID", get_gameserver_id},

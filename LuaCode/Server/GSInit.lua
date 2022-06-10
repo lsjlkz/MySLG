@@ -14,16 +14,6 @@ local function get_this_lua_path()
     return path
 end
 
-local idToFunc = {world, gateway, logic}
-
-local function main()
-    print("GSInit start...")
-    local cGameServer = require("cGameServer")
-    print(cGameServer.GetGameServerID())
-    idToFunc[cGameServer.GetGameServerID()]()
-
-end
-
 
 local function world()
     --初始化游戏世界
@@ -40,5 +30,15 @@ local function gateway()
     local gateway_init = require("GateWay/GateWayInit")
     gateway_init.init()
 end
+
+
+local initFuncTable = { world, gateway, logic}
+
+local function main()
+    print("GSInit start...")
+    local cGameServer = require("cGameServer")
+    initFuncTable[cGameServer.GetGameServerID()]()
+end
+
 
 main()

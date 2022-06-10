@@ -271,7 +271,6 @@ int luaopen_army_libs(lua_State *L){
 	luaL_newmetatable(L, "ArmyTroops");
 	//将元表作为一个副本压栈到位置-1，刚刚创建的元表位置-2
 	lua_pushvalue(L, -1);
-
 	lua_setfield(L, -2, "__index");
 	luaL_setfuncs(L, lua_reg_army_funcs, 0);
 	// 创建新表，压函数

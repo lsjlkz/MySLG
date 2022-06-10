@@ -7,6 +7,7 @@
 #define MYSLG_SINGLETON_H
 
 #include <vector>
+#include <unordered_map>
 #include <map>
 #include "iostream"
 

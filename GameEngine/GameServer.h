@@ -12,7 +12,7 @@ public:
 	int CreateNetwork(int MaxConnect, int Thread, int Port);
 	void SetGameServerID(int id);
 	int GetGameServerID(){return GameServerID;};
-	int Init(int id);
+	int Init(char* argv[]);
 
 private:
 	GENetWork* geNetWork;
