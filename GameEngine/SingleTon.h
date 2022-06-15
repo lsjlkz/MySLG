@@ -23,7 +23,6 @@ protected:
 
 public:
 
-    static void Init(int argc, char* argv);
     static void Delete(){
         if(m_Instance){
             // 调用子类的析构
