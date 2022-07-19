@@ -6,13 +6,8 @@
 #ifndef MYSLG_LUAENGINE_H
 #define MYSLG_LUAENGINE_H
 
-#include "SingleTon.h"
-
-extern "C"{
-#include "Lua/lua.h"
-#include "Lua/lualib.h"
-#include "Lua/lauxlib.h"
-}
+#include "Head.h"
+#include "GENetPack.h"
 // 需要加上这一行才行
 #pragma comment(lib, "Lua.lib")
 

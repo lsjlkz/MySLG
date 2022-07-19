@@ -74,10 +74,11 @@ void LuaEngine::RegAppend(luaL_Reg lReg) {
 }
 
 int LuaEngine::LoadFile(const char *filepath) {
-	if(luaL_loadfile(L, filepath)){
-		std::cout << lua_tostring(L, -1) << std::endl;;
+	int ret = luaL_loadfile(L, filepath);
+	if(ret){
+		std::cout << "load lua file error:(" << filepath << ")" << std::endl;
 	}
-	return 0;
+	return ret;
 }
 
 int LuaEngine::DoFile(const char *filepath) {
@@ -86,3 +87,4 @@ int LuaEngine::DoFile(const char *filepath) {
 	}
 	return 0;
 }
+

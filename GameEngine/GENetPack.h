@@ -7,16 +7,12 @@
 
 #include <vector>
 #include <list>
-#include "LuaEngine.h"
 #include "GEDefine.h"
+#include "Head.h"
 
 #define IntFlag					-1
 #define LongFlag				-2
 #define BoolFlag				-3
-#define FloatFlag				-4
-#define DoubleFlag				-5
-#define StringFlag				-6
-#define CharFlag				-7
 
 #define NoneFlag				-100
 #define TrueFlag				-101
@@ -24,26 +20,30 @@
 #define TableFlag				-103
 #define BinFlag					-104
 #define DateTimeFlag			-105
+#define StringFlag				-106
+#define CharFlag				-107
 
-#define MSG_MAX_SIZE			65536		// 最大char长度
+#define MSG_MAX_SIZE			256		// 最大char长度
 #define MAX_STACK_DEEP			30			// 最大递归层数
+
+// 网络消息的基本长度
+#define MSG_BASE_SIZE	4
 
 #define ASSERT_LUA_TOP(L, top, i)	\
 	if (top + i != lua_gettop(L)) { std::abort(); };
 
-typedef std::vector<char*>			BufPool;
+typedef std::list<char*>			BufPool;
 typedef std::list<char*>			BufQueue;
 
+
+
 // 这个模块即将会很庞大，貌似
-
-
-class PackMessage {
+class PackMessage:public SingleTon<PackMessage>{
 
 public:
-
+	BufPool*		bigMsgPool;
 	BufQueue*		bigMsgQueue;		// 打包的流队列
-	BufPool*		bigMsgPool;			// 打包的池，貌似是因为linux的glibc不讲内存归还操作系统，所以需要这个
-	int MsgSize;
+	int				msgSize;
 	char*			curBufHead;			// 当前打包的缓冲区的头
 	int 			curBufOffset;		// 当前打包的缓冲区偏移
 	int				curBufEmpty;		// 当前打包的缓冲区剩余空间
@@ -52,41 +52,61 @@ public:
 	PackMessage();
 	~PackMessage();
 
+	void			ClearCache();
+
 	bool			PackType(int t);
+
 	bool 			PackCharInt(int c);
 	bool 			PackChar(char c);
+
 	bool			PackInt(int i);
 	int&			PackIntRef();
 	bool			PackIntObj(int i);
+
 	bool			PackLong(long l);
 	bool			PackLongObj(long l);
+
 	bool			PackBool(bool b);
 	bool			PackBoolObj(bool b);
-	bool 			PackFloat(float f);
-	bool 			PackFloatObj(float f);
-	bool 			PackDouble(double d);
-	bool 			PackDoubleObj(double d);
+
 	bool 			PackString(const char* s, int size);
 	bool 			PackStringObj(const char *s, int size);
+
 	bool 			PackLuaObj(lua_State* L);
-	bool 			PackLuaHelp(lua_State* L, int index);
-	int				PackSize(){return MsgSize;}
+	void 			PackLuaHelp(lua_State* L, int index);
+
+	int				PackSize() const{return msgSize;}
 	void 			PackByte(const void* pHead, int size);
-	BufQueue*		BigMsgQueue(){return bigMsgQueue;}
+	BufQueue*		BigMsgQueue() const{return bigMsgQueue;}
 	void			NewBuf();			// 新建一个缓冲区
+	char*			MsgIter();
+
 
 };
 
 class UnpackMessage{
 public:
-	UnpackMessage(BigObj* bigObj);
+	UnpackMessage(void* pHead);
 	UnpackMessage(void* pHead, int nSize);
 public:
-	bool			UnpackInt(int i);
-	bool			UnpackLong(long l);
-	bool			UnpackBool(bool b);
-	bool 			UnpackFloat(float f);
-	bool 			UnpackDouble(double d);
+	bool 			UnpackType(int&flag);
+	bool			UnpackInt(int& i);
+	bool			UnpackLong(long& l);
+	bool			UnpackBool(bool& b);
+	bool 			UnpackString(char* s, int size);
+	bool 			UnpackLuaObj(lua_State* L);
+	bool 			UnpackLuaObjHelp(lua_State* L);
+
+	int				MsgSize(){return msgSize;}
+
+private:
+	int 			curBufOffset;		// 当前打包的缓冲区偏移
+	char*			curBufHead;			// 缓冲区的头
+	int				msgSize;			// 消息大小
+	int				leftSize;			// 剩余大小
+	bool 			isOK;				// 是否有报错
+
 };
+
 
 #endif //MYSLG_GENETPACK_H

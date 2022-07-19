@@ -18,6 +18,7 @@ int main(int argc, char* argv[]) {
 	ArmyManager::New();
 	GameServer::New();
 	GameServer::Instance()->Init(argv);
+	PackMessage::New();
 	LuaEngine::New();
 	LuaEngine::Instance()->Init();
 	RegLuaModule();

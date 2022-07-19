@@ -30,14 +30,9 @@ int LuaGameServer::RegLuaFunc(lua_State *L) {
 
 int LuaGameServer::CallLuaFunc(int funcID, const char* p) {
 	lua_State *L = LuaEngine::Instance()->GetLuaState();
-	if(L == nullptr){
-		std::cout << "Create lua State Error" << std::endl;
-		return 1;
-	}
-	int ret = luaL_loadfile(L, "../LuaCode/Common/Game/Function.lua");
+	int ret = LuaEngine::Instance()->LoadFile("../LuaCode/Common/Game/Function.lua");
 	if(ret){
-		std::cout << "lua dofile err" << std::endl;
-		return 1;
+		return ret;
 	}
 	// 获取元表
 	lua_getglobal(L, "__G__FunctionTable");
@@ -60,12 +55,52 @@ int LuaGameServer::CallLuaFunc(lua_State *L) {
 	return CallLuaFunc(funcID, p);
 }
 
+int LuaGameServer::PackMsg(lua_State* L){
+	PackMessage::Instance()->ClearCache();
+	PackMessage::Instance()->PackLuaObj(L);
+	char* debug_msg = new char[PackMessage::Instance()->msgSize];
+	for(int i = 0; i < PackMessage::Instance()->msgSize; i++){
+		char b = *(PackMessage::Instance()->curBufHead + PackMessage::Instance()->msgSize - i);
+		debug_msg[i] = b;
+	}
+	DebugRecvMsg(debug_msg, PackMessage::Instance()->msgSize);
+	return 0;
+//	return PackMessage::Instance()->PackLuaObj(L);
+}
+
+int LuaGameServer::DebugRecvMsg(char *s, int size) {
+	lua_State* L = LuaEngine::Instance()->GetLuaState();
+	lua_settop(L, 0);
+	const char* filepath = "../LuaCode/Common/LuaMessage.lua";
+	int ret = LuaEngine::Instance()->LoadFile(filepath);
+	if(ret){
+		return ret;
+	}
+	// 获取元表
+	lua_getglobal(L, "__G__LuaMessageTable");
+	// 获取函数分发函数
+	lua_pushstring(L, "trigger_server_distribute");
+	UnpackMessage um = UnpackMessage(s, size);
+	int msg_size = 0;
+	um.UnpackInt(msg_size);
+	int msg_type = 0;
+	um.UnpackInt(msg_type);
+//	lua_gettable(L, -2);
+	lua_pushinteger(L, msg_type);
+	um.UnpackLuaObj(L);
+	return 1;
+}
+
 int reg_lua_func(lua_State* L){
 	return 0;
 }
 
 int call_lua_func(lua_State *L){
 	return LuaGameServer::CallLuaFunc(L);
+}
+
+int pack_msg(lua_State* L){
+	return LuaGameServer::PackMsg(L);
 }
 
 int get_gameserver_id(lua_State* L){

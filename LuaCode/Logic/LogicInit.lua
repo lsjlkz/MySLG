@@ -20,6 +20,8 @@ function __G__LogicTable.init()
     local idx = f.RegMesFunction(__G__LogicTable.test)
     f.TriMesFunction(idx, 3)
     cGameServer.CallLuaFunc(idx, 555);
+
+    print(cGameServer.PackMsg(3, {3,4,5, 6, 7, false}))
 end
 
 return __G__LogicTable

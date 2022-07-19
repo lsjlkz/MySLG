@@ -31,6 +31,9 @@ public:
         }
     }
     static T* Instance(void){
+		if(!m_Instance){
+			New();
+		}
         return m_Instance;
     }
 
