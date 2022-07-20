@@ -26,6 +26,8 @@ function __G__FunctionTable.RegMesFunction(func)
 end
 
 function __G__FunctionTable.TriMesFunction(func_id, mes_param)
+    print(func_id)
+    print(mes_param)
     if __G__FunctionTable.FuncTable[func_id] == nil then
         return
     end

@@ -10,18 +10,13 @@
 #include "GEDefine.h"
 #include "Head.h"
 
-#define IntFlag					-1
-#define LongFlag				-2
-#define BoolFlag				-3
-
+#define IntFlag					-98
+#define LongFlag				-99
 #define NoneFlag				-100
 #define TrueFlag				-101
 #define FalseFlag				-102
 #define TableFlag				-103
-#define BinFlag					-104
-#define DateTimeFlag			-105
 #define StringFlag				-106
-#define CharFlag				-107
 
 #define MSG_MAX_SIZE			256		// 最大char长度
 #define MAX_STACK_DEEP			30			// 最大递归层数
@@ -53,6 +48,8 @@ public:
 	~PackMessage();
 
 	void			ClearCache();
+
+	bool 			PackMsgType(int msgType);
 
 	bool			PackType(int t);
 
@@ -90,6 +87,7 @@ public:
 	UnpackMessage(void* pHead, int nSize);
 public:
 	bool 			UnpackType(int&flag);
+	bool 			UnpackMsgType(int& msgType);
 	bool			UnpackInt(int& i);
 	bool			UnpackLong(long& l);
 	bool			UnpackBool(bool& b);

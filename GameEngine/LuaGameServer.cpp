@@ -58,36 +58,33 @@ int LuaGameServer::CallLuaFunc(lua_State *L) {
 int LuaGameServer::PackMsg(lua_State* L){
 	PackMessage::Instance()->ClearCache();
 	PackMessage::Instance()->PackLuaObj(L);
-	char* debug_msg = new char[PackMessage::Instance()->msgSize];
-	for(int i = 0; i < PackMessage::Instance()->msgSize; i++){
-		char b = *(PackMessage::Instance()->curBufHead + PackMessage::Instance()->msgSize - i);
-		debug_msg[i] = b;
-	}
-	DebugRecvMsg(debug_msg, PackMessage::Instance()->msgSize);
+	DebugRecvMsg(PackMessage::Instance()->curBufHead, PackMessage::Instance()->msgSize);
 	return 0;
 //	return PackMessage::Instance()->PackLuaObj(L);
 }
 
 int LuaGameServer::DebugRecvMsg(char *s, int size) {
 	lua_State* L = LuaEngine::Instance()->GetLuaState();
-	lua_settop(L, 0);
-	const char* filepath = "../LuaCode/Common/LuaMessage.lua";
-	int ret = LuaEngine::Instance()->LoadFile(filepath);
+	int ret = LuaEngine::Instance()->LoadFile("../LuaCode/Common/Game/Message.lua");
 	if(ret){
 		return ret;
 	}
 	// 获取元表
-	lua_getglobal(L, "__G__LuaMessageTable");
+	lua_getglobal(L, "__G__MessageTable");
 	// 获取函数分发函数
-	lua_pushstring(L, "trigger_server_distribute");
+	lua_pushstring(L, "TriggerServerDistribute");
+	lua_gettable(L, -2);
 	UnpackMessage um = UnpackMessage(s, size);
 	int msg_size = 0;
 	um.UnpackInt(msg_size);
 	int msg_type = 0;
-	um.UnpackInt(msg_type);
-//	lua_gettable(L, -2);
+	um.UnpackMsgType(msg_type);
 	lua_pushinteger(L, msg_type);
 	um.UnpackLuaObj(L);
+	ret = lua_pcall(L, 2, 0, 0);
+	if(ret){
+		std::cout << "lua call err" << std::endl;
+	}
 	return 1;
 }
 

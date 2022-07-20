@@ -13,6 +13,7 @@ end
 
 function __G__Module_Table.findindir (path, wefind, r_table, intofolder)
     for file in lfs.dir(path) do
+        print(file)
         if file ~= "." and file ~= ".." then
             local f = path..'\\'..file
             --print ("/t "..f)
@@ -35,7 +36,7 @@ end
 
 
 function __G__Module_Table.load_all_module()
-    findindir(currentFolder, "%.lua", input_table, false)--查找lua文件，这里可以改的
+    __G__Module_Table.findindir(currentFolder, "%.lua", input_table, false)--查找lua文件，这里可以改的
 end
 
 return __G__Module_Table

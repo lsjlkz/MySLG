@@ -33,6 +33,7 @@ char* PackMessage::MsgIter(){
 	for(auto & it : *bigMsgQueue){
 		return it;
 	}
+	return nullptr;
 }
 
 bool PackMessage::PackType(int t) {
@@ -73,22 +74,6 @@ bool PackMessage::PackLongObj(long l) {
 	return true;
 }
 
-bool PackMessage::PackBool(bool b) {
-	if(b){
-		char bb = static_cast<char>(TrueFlag);
-	}else{
-		char bb = static_cast<char>(FalseFlag);
-	}
-	this->PackByte(new char(FalseFlag), sizeof(char));
-	return true;
-}
-
-bool PackMessage::PackBoolObj(bool b) {
-	this->PackType(BoolFlag);
-	this->PackInt(b);
-	return true;
-}
-
 bool PackMessage::PackString(const char *s, int size) {
 	this->PackByte(s, size);
 	return true;
@@ -109,7 +94,7 @@ void PackMessage::PackByte(const void *pHead, int size) {
 	}
 	if(size <= this->curBufEmpty){
 		// 还够用，不用重新申请
-		memcpy(this->curBufHead, pHead, size);
+		memcpy(this->curBufHead + this->curBufOffset, pHead, size);
 		this->curBufOffset += size;
 		this->msgSize += size;
 		this->curBufEmpty -= size;
@@ -143,7 +128,7 @@ bool PackMessage::PackLuaObj(lua_State *L) {
 	int& size = this->PackIntRef();
 	this->curStackDeep = 0;
 	int msg_type = (int) lua_tointeger(L, -2);
-	this->PackIntObj(msg_type);
+	this->PackMsgType(msg_type);
 	this->PackLuaHelp(L, -1);
 	size = this->PackSize();
 	return true;
@@ -173,31 +158,25 @@ void PackMessage::PackLuaHelp(lua_State *L, int index) {
 		// TODO 越界
 		this->PackStringObj(s, (int)size);
 	}else if(lt == LUA_TTABLE){
-		int& TableSize = this->PackIntRef();
+		this->PackType(TableFlag);
+		int& tableSize = this->PackIntRef();
 		int size = 0;
 		// 也就是把-1这些索引转为正值的索引，如长度为n，索引-2应为倒数第二个，也就是转为n-1
 		int table_index = lua_absindex(L, index);
 		// lua_checkstack检测栈上是否有足够的空间，如下是检测top上是否还有2个位置，不够的话会自动扩容
 		lua_checkstack(L, top + 2);
 		lua_pushnil(L);
-		ASSERT_LUA_TOP(L, top, 1);
 		while(lua_next(L, table_index)){
-			ASSERT_LUA_TOP(L, top, 2);
 			size++;
-			int ud = this->curStackDeep;
+			// key
 			this->PackLuaHelp(L, -2);
-			GE_WIN_ASSERT(ud == this->curStackDeep);
-			ASSERT_LUA_TOP(L, top, 2);
-
+			// value
 			this->PackLuaHelp(L, -1);
-			ASSERT_LUA_TOP(L, top, 2);
 
 			lua_pop(L, 1);
-			ASSERT_LUA_TOP(L, top, 1);
 		}
 
-		ASSERT_LUA_TOP(L, top, 0);
-		TableSize = size;
+		tableSize = size;
 	}else{
 		std::cout << "not support lua object" << std::endl;
 	}
@@ -206,7 +185,7 @@ void PackMessage::PackLuaHelp(lua_State *L, int index) {
 }
 
 int &PackMessage::PackIntRef() {
-	int*r = new int(0);
+	int*r = (int*)(this->curBufHead + this->curBufOffset);
 	// 把长度打包进去，最后再改
 	this->PackByte(r, sizeof(int));
 	return *r;
@@ -219,14 +198,20 @@ void PackMessage::ClearCache() {
 	}
 }
 
+bool PackMessage::PackMsgType(int msgType) {
+	this->PackInt(msgType);
+	return false;
+}
+
+
 bool UnpackMessage::UnpackType(int &flag) {
-	if(leftSize < sizeof(int)){
+	if(leftSize < sizeof(char)){
 		this->isOK = false;
 		return false;
 	}
-	flag = static_cast<int>(*(curBufHead));
-	curBufHead += sizeof(int);
-	leftSize -= sizeof(int);
+	flag = static_cast<char>(*(curBufHead));
+	curBufHead += sizeof(char);
+	leftSize -= sizeof(char);
 	return true;
 }
 
@@ -235,7 +220,7 @@ bool UnpackMessage::UnpackInt(int& i) {
 		this->isOK = false;
 		return false;
 	}
-	i = static_cast<int>(*(curBufHead));
+	i = static_cast<int>(*((int*)curBufHead));
 	curBufHead += sizeof(int);
 	leftSize -= sizeof(int);
 	return true;
@@ -246,20 +231,9 @@ bool UnpackMessage::UnpackLong(long &l) {
 		this->isOK = false;
 		return false;
 	}
-	l = static_cast<long>(*(curBufHead));
+	l = static_cast<long>(*((long*)curBufHead));
 	curBufHead += sizeof(long);
 	leftSize -= sizeof(long);
-	return true;
-}
-
-bool UnpackMessage::UnpackBool(bool &b) {
-	if(leftSize < sizeof(bool)){
-		this->isOK = false;
-		return false;
-	}
-	b = static_cast<bool>(*(curBufHead));
-	curBufHead += sizeof(bool);
-	leftSize -= sizeof(bool);
 	return true;
 }
 
@@ -276,14 +250,14 @@ bool UnpackMessage::UnpackString(char *s, int size) {
 UnpackMessage::UnpackMessage(void *pHead){
 	msgSize = 0;
 	leftSize = 0;
-	curBufHead = reinterpret_cast<char*>(pHead);
+	curBufHead = static_cast<char*>(pHead);
 	curBufOffset = 0;
 }
 
 UnpackMessage::UnpackMessage(void *pHead, int nSize) {
 	msgSize = nSize;
 	leftSize = msgSize;
-	curBufHead = reinterpret_cast<char*>(pHead);
+	curBufHead = static_cast<char*>(pHead);
 	curBufOffset = 0;
 }
 
@@ -350,16 +324,18 @@ bool UnpackMessage::UnpackLuaObjHelp(lua_State *L) {
 			int size = 0;
 			// table的长度
 			this->UnpackInt(size);
-			lua_createtable(L, size, 0);
+//			lua_createtable(L, size, 0);
+			lua_newtable(L);
 			ASSERT_LUA_TOP(L, top, 1);
 			int table_index = lua_gettop(L);
 			for(int idx = 0; idx < size; idx++){
-				lua_pushinteger(L, idx + 1);
-				ASSERT_LUA_TOP(L, top, 2);
+
+//				lua_pushinteger(L, idx + 1);
+				// key
 				this->UnpackLuaObjHelp(L);
-				ASSERT_LUA_TOP(L, top, 3);
+				// value
+				this->UnpackLuaObjHelp(L);
 				lua_settable(L, table_index);
-				ASSERT_LUA_TOP(L, top, 1);
 			}
 			break;
 		}
@@ -371,4 +347,8 @@ bool UnpackMessage::UnpackLuaObjHelp(lua_State *L) {
 	}
 	ASSERT_LUA_TOP(L, top, 1);
 	return true;
+}
+
+bool UnpackMessage::UnpackMsgType(int &msgType) {
+	return this->UnpackInt(msgType);
 }
